@@ -1,0 +1,17 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{ts,js,tsx,jsx,css}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+quote_type = single
+
+[{*.json,*.yaml,*.yml}]
+indent_style = space
+indent_size = 2
