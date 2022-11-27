@@ -22,7 +22,7 @@ tasks:
     init: |
       npm install -g pnpm@7.17.0
       pnpm install
-    before: pnpn run prepare
+    before: pnpm run prepare
 
 vscode:
   extensions:
