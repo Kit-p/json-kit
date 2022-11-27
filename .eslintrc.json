@@ -10,7 +10,8 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "ignorePatterns": ["node_modules", "dist"]
 }

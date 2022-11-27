@@ -9,6 +9,7 @@ specifiers:
   "@types/jest": ^29.2.3
   "@typescript-eslint/eslint-plugin": ^5.44.0
   "@typescript-eslint/parser": ^5.44.0
+  bson: ^4.7.0
   concurrently: ^7.6.0
   eslint: ^8.28.0
   husky: ^8.0.2
@@ -21,6 +22,9 @@ specifiers:
   ts-jest: ^29.0.3
   tslib: ^2.4.1
   typescript: ^4.9.3
+
+dependencies:
+  bson: 4.7.0
 
 devDependencies:
   "@commitlint/cli": 17.3.0
@@ -2200,6 +2204,13 @@ packages:
       }
     dev: true
 
+  /base64-js/1.5.1:
+    resolution:
+      {
+        integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==,
+      }
+    dev: false
+
   /before-after-hook/2.2.3:
     resolution:
       {
@@ -2267,12 +2278,32 @@ packages:
       node-int64: 0.4.0
     dev: true
 
+  /bson/4.7.0:
+    resolution:
+      {
+        integrity: sha512-VrlEE4vuiO1WTpfof4VmaVolCVYkYTgB9iWgYNOrVlnifpME/06fhFRmONgBhClD5pFC1t9ZWqFUQEQAzY43bA==,
+      }
+    engines: { node: ">=6.9.0" }
+    dependencies:
+      buffer: 5.7.1
+    dev: false
+
   /buffer-from/1.1.2:
     resolution:
       {
         integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==,
       }
     dev: true
+
+  /buffer/5.7.1:
+    resolution:
+      {
+        integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==,
+      }
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
 
   /callsites/3.1.0:
     resolution:
@@ -3668,6 +3699,13 @@ packages:
     engines: { node: ">=14" }
     hasBin: true
     dev: true
+
+  /ieee754/1.2.1:
+    resolution:
+      {
+        integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==,
+      }
+    dev: false
 
   /ignore/5.2.0:
     resolution:

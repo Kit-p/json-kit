@@ -48,6 +48,10 @@
     "url": "https://github.com/kit-p/json-kit/issues"
   },
   "homepage": "https://github.com/kit-p/json-kit/",
+  "packageManager": "pnpm@7.17.0",
+  "dependencies": {
+    "bson": "^4.7.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
@@ -69,6 +73,5 @@
     "ts-jest": "^29.0.3",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3"
-  },
-  "packageManager": "pnpm@7.17.0"
+  }
 }
