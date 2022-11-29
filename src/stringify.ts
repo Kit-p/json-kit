@@ -36,7 +36,7 @@ function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
 
 export function stringify(
   obj: any,
-  replacer?: StringifyReplacer | StringifyOptions,
+  replacer?: StringifyReplacer | StringifyOptions | null,
   space?: string | number,
   options?: StringifyOptions
 ): string {
@@ -44,7 +44,7 @@ export function stringify(
   if (replacer != null && typeof replacer === 'function') {
     _replacer = replacer satisfies StringifyReplacer;
   } else {
-    options = replacer satisfies StringifyOptions | undefined;
+    options = (replacer ?? undefined) satisfies StringifyOptions | undefined;
     replacer = undefined;
   }
 
