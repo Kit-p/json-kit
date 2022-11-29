@@ -1,7 +1,7 @@
-import { stringify } from './stringify';
+import * as Stringify from './stringify';
 
 export const JsonKit = {
-  stringify,
+  ...Stringify,
 } as const;
 
 export default JsonKit;

@@ -1,5 +1,6 @@
 import { EJSON } from 'bson';
-import { JsonKit } from '../src';
+import JsonKit from '../src';
+import type { StringifyReplacer } from '../src/stringify';
 
 describe('stringify', () => {
   const obj = {
@@ -19,10 +20,18 @@ describe('stringify', () => {
   };
 
   it('stringify should have identical behavior as built-in JSON.stringify', () => {
+    const replacer: StringifyReplacer = () => 'test';
+
     expect(JsonKit.stringify(obj)).toEqual(JSON.stringify(obj));
+
+    expect(JsonKit.stringify(obj, replacer, ' ')).toEqual(
+      JSON.stringify(obj, replacer, ' ')
+    );
   });
 
   it('stringify should have identical behavior as bson.EJSON.stringify', () => {
+    const replacer: StringifyReplacer = () => 'test';
+
     expect(
       JsonKit.stringify(obj, { extended: { enable: true, relaxed: false } })
     ).toEqual(EJSON.stringify(obj, { relaxed: false }));
@@ -30,6 +39,10 @@ describe('stringify', () => {
     expect(
       JsonKit.stringify(obj, { extended: { enable: true, relaxed: true } })
     ).toEqual(EJSON.stringify(obj, { relaxed: true }));
+
+    expect(JsonKit.stringify(obj, replacer, 4, { extended: true })).toEqual(
+      EJSON.stringify(obj, replacer, 4)
+    );
   });
 
   it('stringify default options should match docs', () => {
