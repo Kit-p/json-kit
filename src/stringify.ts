@@ -134,24 +134,24 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
     }
 
     let minifiedKey: string;
-    if (idx < startChoices - 1) {
-      minifiedKey = MINIFY_STARTING_CANDIDATES[idx];
-    } else {
-      const _idx = idx - startChoices;
-      const startIdx = Math.floor(_idx / remainChoices);
-      const remainIdx = _idx % remainChoices;
-      minifiedKey = `${MINIFY_STARTING_CANDIDATES[startIdx]}${MINIFY_REMAINING_CANDIDATES[remainIdx]}`;
-    }
+    do {
+      if (idx < startChoices - 1) {
+        minifiedKey = MINIFY_STARTING_CANDIDATES[idx];
+      } else {
+        const _idx = idx - startChoices + 1;
+        const startIdx = Math.floor(_idx / remainChoices);
+        const remainIdx = _idx % remainChoices;
+        minifiedKey = `${MINIFY_STARTING_CANDIDATES[startIdx]}${MINIFY_REMAINING_CANDIDATES[remainIdx]}`;
+      }
+      ++idx;
+    } while (allKeys.includes(minifiedKey));
 
     keyMap[minifiedKey] = key;
     reverseKeyMap[key] = minifiedKey;
-    ++idx;
   }
 
   for (const { obj, key, value } of objMaps) {
-    // TODO: fix overwriting data and deleting wrong data if key name crash
-    const minifiedKey = reverseKeyMap[key];
-    obj[minifiedKey] = value;
+    obj[reverseKeyMap[key]] = value;
     delete obj[key];
   }
 
