@@ -27,6 +27,7 @@
     "prepare": "husky install",
     "test": "jest --coverage",
     "lint": "concurrently \"pnpm:lint:*\"",
+    "lint:types": "tsc --noEmit",
     "lint:js": "eslint src",
     "build": "concurrently \"pnpm:build:*\"",
     "build:types": "tsc -d --emitDeclarationOnly",
