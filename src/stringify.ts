@@ -98,7 +98,7 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
   const keyMap: Record<string, string> = {};
   const reverseKeyMap: Record<string, string> = {};
   const objMaps: Array<{ obj: any; key: string; value: any }> = [];
-  const allKeys: string[] = [];
+  const keyCounts: Record<string, number> = {};
   const queue: any[] = [obj];
   while (queue.length > 0) {
     const current = queue.shift();
@@ -115,7 +115,7 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
     if (current.constructor === Object) {
       for (const [key, value] of Object.entries(current)) {
         objMaps.push({ obj: current, key, value });
-        allKeys.push(key);
+        keyCounts[key] = (keyCounts[key] ?? 0) + 1;
         queue.push(value);
       }
     }
@@ -123,6 +123,7 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
     // ignore primitives, functions, and custom objects (e.g. Date)
   }
 
+  const allKeys = Object.keys(keyCounts);
   const startChoices = MINIFY_STARTING_CANDIDATES.length;
   const remainChoices = MINIFY_REMAINING_CANDIDATES.length;
   let idx = 0;
@@ -146,11 +147,21 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
       ++idx;
     } while (allKeys.includes(minifiedKey));
 
+    if (key.length * (keyCounts[key] - 1) < minifiedKey.length * 2) {
+      // optimization for short keys
+      --idx;
+      continue;
+    }
+
     keyMap[minifiedKey] = key;
     reverseKeyMap[key] = minifiedKey;
   }
 
   for (const { obj, key, value } of objMaps) {
+    const minifiedKey = reverseKeyMap[key];
+    if (minifiedKey == null) {
+      continue;
+    }
     obj[reverseKeyMap[key]] = value;
     delete obj[key];
   }
