@@ -8,5 +8,6 @@
   "editor.formatOnSave": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "git.alwaysSignOff": true,
-  "git.branchProtection": ["main"]
+  "git.branchProtection": ["main"],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

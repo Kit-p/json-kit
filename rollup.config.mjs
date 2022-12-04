@@ -1,3 +1,5 @@
+import commonjs from "@rollup/plugin-commonjs";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 
 const config = {
@@ -13,7 +15,11 @@ const config = {
       name: "JsonKit",
     },
   ],
-  plugins: [typescript()],
+  plugins: [
+    typescript(),
+    commonjs({ include: /node_modules/ }),
+    nodeResolve({ browser: true, preferBuiltins: false }),
+  ],
 };
 
 export default config;
