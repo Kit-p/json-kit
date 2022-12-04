@@ -1,5 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 import { EJSON } from 'bson';
-import JsonKit from '../src';
+import { JsonKit } from '../src';
 import type { StringifyReplacer } from '../src/stringify';
 
 describe('[stringify] basic', () => {

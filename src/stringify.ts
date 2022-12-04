@@ -1,4 +1,5 @@
-import { deserialize, EJSON, serialize } from 'bson';
+import { EJSON } from 'bson';
+import cloneDeep from 'lodash.clonedeep';
 import {
   MINIFY_REMAINING_CANDIDATES,
   MINIFY_STARTING_CANDIDATES,
@@ -93,35 +94,11 @@ export interface KeyMinifiedJson<T> {
 }
 
 function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
-  obj = deserialize(serialize(obj as any, { ignoreUndefined: true })) as T;
+  obj = cloneDeep(obj);
 
   const keyMap: Record<string, string> = {};
   const reverseKeyMap: Record<string, string> = {};
-  const objMaps: Array<{ obj: any; key: string; value: any }> = [];
-  const keyCounts: Record<string, number> = {};
-  const queue: any[] = [obj];
-  while (queue.length > 0) {
-    const current = queue.shift();
-
-    if (current == null) {
-      continue;
-    }
-
-    if (Array.isArray(current)) {
-      queue.push(...current);
-      continue;
-    }
-
-    if (current.constructor === Object) {
-      for (const [key, value] of Object.entries(current)) {
-        objMaps.push({ obj: current, key, value });
-        keyCounts[key] = (keyCounts[key] ?? 0) + 1;
-        queue.push(value);
-      }
-    }
-
-    // ignore primitives, functions, and custom objects (e.g. Date)
-  }
+  const keyCounts: Record<string, number> = findAllJsonKeys(obj);
 
   const allKeys = Object.keys(keyCounts);
   const startChoices = MINIFY_STARTING_CANDIDATES.length;
@@ -129,10 +106,6 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
   let idx = 0;
   for (let i = 0; i < allKeys.length; i++) {
     const key = allKeys[i];
-
-    if (reverseKeyMap[key] != null) {
-      continue;
-    }
 
     let minifiedKey: string;
     do {
@@ -145,7 +118,7 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
         minifiedKey = `${MINIFY_STARTING_CANDIDATES[startIdx]}${MINIFY_REMAINING_CANDIDATES[remainIdx]}`;
       }
       ++idx;
-    } while (allKeys.includes(minifiedKey));
+    } while (keyCounts[minifiedKey] != null);
 
     if (key.length * (keyCounts[key] - 1) < minifiedKey.length * 2) {
       // optimization for short keys
@@ -157,17 +130,48 @@ function minifyJsonKeys<T>(obj: T): KeyMinifiedJson<T> {
     reverseKeyMap[key] = minifiedKey;
   }
 
-  for (const { obj, key, value } of objMaps) {
-    const minifiedKey = reverseKeyMap[key];
-    if (minifiedKey == null) {
-      continue;
-    }
-    obj[reverseKeyMap[key]] = value;
-    delete obj[key];
-  }
+  obj = minifyAllKeys(obj, reverseKeyMap);
 
   return {
     _jkv: obj,
     _jkm: keyMap,
   };
+}
+
+function findAllJsonKeys(
+  obj: any,
+  keyCounts: Record<string, number> = {}
+): Record<string, number> {
+  if (Array.isArray(obj)) {
+    obj.forEach((o) => {
+      keyCounts = findAllJsonKeys(o, keyCounts);
+    });
+  } else if (obj?.constructor === Object) {
+    Object.entries(obj).forEach(([key, value]) => {
+      keyCounts[key] = (keyCounts[key] ?? 0) + 1;
+      keyCounts = findAllJsonKeys(value, keyCounts);
+    });
+  }
+
+  // ignore null, undefined, other primitives, functions, and custom objects (e.g. Date)
+  return keyCounts;
+}
+
+function minifyAllKeys(obj: any, reverseKeyMap: Record<string, string>): any {
+  if (Array.isArray(obj)) {
+    obj.forEach((o, i) => {
+      obj[i] = minifyAllKeys(o, reverseKeyMap);
+    });
+  } else if (obj?.constructor === Object) {
+    Object.entries(obj).forEach(([key, value]) => {
+      value = minifyAllKeys(value, reverseKeyMap);
+      const minifiedKey = reverseKeyMap[key];
+      if (typeof minifiedKey === 'string' && minifiedKey.length > 0) {
+        obj[minifiedKey] = value;
+        delete obj[key];
+      }
+    });
+  }
+
+  return obj;
 }
