@@ -25,7 +25,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --coverage",
+    "test": "jest --coverage --filter \"./jest.filter.cjs\"",
+    "test:perf": "jest --filter \"./jest.perf.filter.cjs\"",
     "lint": "concurrently \"pnpm:lint:*\"",
     "lint:types": "tsc --noEmit",
     "lint:js": "eslint src",
@@ -51,15 +52,22 @@
   "homepage": "https://github.com/kit-p/json-kit/",
   "packageManager": "pnpm@7.17.0",
   "dependencies": {
-    "bson": "^4.7.0"
+    "bson": "^4.7.0",
+    "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
+    "@jest/globals": "^29.3.1",
     "@rollup/browser": "^3.4.0",
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
     "@semantic-release/npm": "^9.0.1",
+    "@swc/core": "^1.3.21",
+    "@swc/jest": "^0.2.23",
     "@types/jest": "^29.2.3",
+    "@types/lodash.clonedeep": "^4.5.7",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "concurrently": "^7.6.0",
