@@ -1,5 +1,6 @@
 import { EJSON } from 'bson';
 import cloneDeep from 'lodash.clonedeep';
+import { compressToUTF16 } from 'lz-string';
 import {
   MINIFY_REMAINING_CANDIDATES,
   MINIFY_STARTING_CANDIDATES,
@@ -10,16 +11,19 @@ export type StringifyReplacer = (this: any, key: string, value: any) => any;
 export interface StringifyOptions {
   extended?: boolean | { enable: boolean; relaxed?: boolean };
   minify?: false | { whitespace?: boolean; key?: boolean };
+  compress?: boolean | { enable: boolean };
 }
 
 interface _StringifyOptions {
   extended: { enable: boolean; relaxed: boolean };
   minify: { whitespace: boolean; key: boolean };
+  compress: { enable: boolean };
 }
 
 const defaultOptions: _StringifyOptions = {
   extended: { enable: false, relaxed: true },
   minify: { whitespace: false, key: false },
+  compress: { enable: false },
 };
 
 function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
@@ -53,6 +57,18 @@ function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
     };
   }
 
+  if (input.compress == null) {
+    input.compress = defaultOptions.compress;
+  } else if (typeof input.compress === 'boolean') {
+    input.compress = {
+      enable: input.compress,
+    };
+  } else {
+    input.compress = {
+      enable: input.compress.enable,
+    };
+  }
+
   return input as _StringifyOptions;
 }
 
@@ -80,12 +96,19 @@ export function stringify(
     obj = minifyJsonKeys(obj);
   }
 
+  let result: string;
   if (_options.extended.enable) {
-    return EJSON.stringify(obj, _replacer, space, {
+    result = EJSON.stringify(obj, _replacer, space, {
       relaxed: _options.extended.relaxed,
     });
+  } else {
+    result = JSON.stringify(obj, _replacer, space);
   }
-  return JSON.stringify(obj, _replacer, space);
+
+  if (_options.compress.enable) {
+    return compressString(result);
+  }
+  return result;
 }
 
 export interface KeyMinifiedJson<T> {
@@ -174,4 +197,8 @@ function minifyAllKeys(obj: any, reverseKeyMap: Record<string, string>): any {
   }
 
   return obj;
+}
+
+export function compressString(str: string): string {
+  return compressToUTF16(str);
 }
