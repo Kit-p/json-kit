@@ -1,6 +1,6 @@
 import { EJSON } from 'bson';
 import cloneDeep from 'lodash.clonedeep';
-import { compressToUTF16 } from 'lz-string';
+import { compress } from 'lz4-wasm-nodejs';
 import {
   MINIFY_REMAINING_CANDIDATES,
   MINIFY_STARTING_CANDIDATES,
@@ -200,5 +200,7 @@ function minifyAllKeys(obj: any, reverseKeyMap: Record<string, string>): any {
 }
 
 export function compressString(str: string): string {
-  return compressToUTF16(str);
+  return Buffer.from(compress(new TextEncoder().encode(str))).toString(
+    'base64url'
+  );
 }
