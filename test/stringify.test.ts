@@ -1,7 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { EJSON } from 'bson';
 import { JsonKit } from '../src';
-import type { StringifyReplacer } from '../src/stringify';
+import type {
+  StringifyReplacerArray,
+  StringifyReplacerFunction,
+} from '../src/stringify';
 
 describe('[stringify] basic', () => {
   const obj = {
@@ -21,17 +24,23 @@ describe('[stringify] basic', () => {
   };
 
   it('stringify should have identical behavior as built-in JSON.stringify', () => {
-    const replacer: StringifyReplacer = () => 'test';
+    const replacerArr: StringifyReplacerArray = ['a', 2];
+    const replacerFunc: StringifyReplacerFunction = () => 'test';
 
     expect(JsonKit.stringify(obj)).toEqual(JSON.stringify(obj));
 
-    expect(JsonKit.stringify(obj, replacer, ' ')).toEqual(
-      JSON.stringify(obj, replacer, ' ')
+    expect(JsonKit.stringify(obj, replacerArr, ' ')).toEqual(
+      JSON.stringify(obj, replacerArr, ' ')
+    );
+
+    expect(JsonKit.stringify(obj, replacerFunc, ' ')).toEqual(
+      JSON.stringify(obj, replacerFunc, ' ')
     );
   });
 
   it('stringify should have identical behavior as bson.EJSON.stringify', () => {
-    const replacer: StringifyReplacer = () => 'test';
+    const replacerArr: StringifyReplacerArray = ['a', 2];
+    const replacerFunc: StringifyReplacerFunction = () => 'test';
 
     expect(
       JsonKit.stringify(obj, { extended: { enable: true, relaxed: false } })
@@ -41,8 +50,12 @@ describe('[stringify] basic', () => {
       JsonKit.stringify(obj, { extended: { enable: true, relaxed: true } })
     ).toEqual(EJSON.stringify(obj, { relaxed: true }));
 
-    expect(JsonKit.stringify(obj, replacer, 4, { extended: true })).toEqual(
-      EJSON.stringify(obj, replacer, 4)
+    expect(JsonKit.stringify(obj, replacerArr, 4, { extended: true })).toEqual(
+      EJSON.stringify(obj, replacerArr, 4)
+    );
+
+    expect(JsonKit.stringify(obj, replacerFunc, 4, { extended: true })).toEqual(
+      EJSON.stringify(obj, replacerFunc, 4)
     );
   });
 
@@ -190,7 +203,7 @@ describe('[stringify] compress', () => {
   };
 
   it('stringify with compression should have identical behavior as built-in JSON.stringify and compression', () => {
-    const replacer: StringifyReplacer = () => 'test';
+    const replacer: StringifyReplacerFunction = () => 'test';
 
     expect(JsonKit.stringify(obj, { compress: true })).toEqual(
       JsonKit.compressString(JSON.stringify(obj))
@@ -202,7 +215,7 @@ describe('[stringify] compress', () => {
   });
 
   it('stringify with compression should have identical behavior as bson.EJSON.stringify and compression', () => {
-    const replacer: StringifyReplacer = () => 'test';
+    const replacer: StringifyReplacerFunction = () => 'test';
 
     expect(
       JsonKit.stringify(obj, {

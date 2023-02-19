@@ -6,7 +6,12 @@ import {
   MINIFY_STARTING_CANDIDATES,
 } from './constants';
 
-export type StringifyReplacer = (this: any, key: string, value: any) => any;
+export type StringifyReplacerArray = (string | number)[];
+export type StringifyReplacerFunction = (
+  this: any,
+  key: string,
+  value: any
+) => any;
 
 export interface StringifyOptions {
   extended?: boolean | { enable: boolean; relaxed?: boolean };
@@ -74,13 +79,19 @@ function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
 
 export function stringify(
   obj: any,
-  replacer?: StringifyReplacer | StringifyOptions | null,
+  replacer?:
+    | StringifyReplacerArray
+    | StringifyReplacerFunction
+    | StringifyOptions
+    | null,
   space?: string | number,
   options?: StringifyOptions
 ): string {
-  let _replacer: StringifyReplacer | undefined = undefined;
-  if (replacer != null && typeof replacer === 'function') {
-    _replacer = replacer satisfies StringifyReplacer;
+  let _replacer: any = undefined;
+  if (Array.isArray(replacer)) {
+    _replacer = replacer satisfies StringifyReplacerArray;
+  } else if (typeof replacer === 'function') {
+    _replacer = replacer satisfies StringifyReplacerFunction;
   } else if (options == null) {
     options = (replacer ?? undefined) satisfies StringifyOptions | undefined;
     replacer = undefined;
