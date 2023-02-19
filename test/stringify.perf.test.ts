@@ -8,7 +8,7 @@ const test = (data: any): void => {
   const [basic, basicDuration] = timer(() => JsonKit.stringify(data));
 
   const [minified, minifiedDuration] = timer(() =>
-    JsonKit.stringify(data, { minify: { key: true } })
+    JsonKit.stringify(data, { minify: true })
   );
 
   const [compressed, compressedDuration] = timer(() =>
@@ -17,7 +17,7 @@ const test = (data: any): void => {
 
   const [minifiedAndCompressed, minifiedAndCompressedDuration] = timer(() =>
     JsonKit.stringify(data, {
-      minify: { key: true },
+      minify: true,
       compress: true,
     })
   );
