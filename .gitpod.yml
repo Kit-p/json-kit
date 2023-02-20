@@ -19,10 +19,10 @@ image: gitpod/workspace-node-lts
 
 tasks:
   - name: Setup the environment
-    init: |
+    before: |
       npm install -g pnpm@7.17.0
       pnpm install
-    before: pnpm run prepare
+    init: pnpm run prepare
 
 vscode:
   extensions:
