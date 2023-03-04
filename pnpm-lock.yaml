@@ -16,6 +16,7 @@ specifiers:
   "@typescript-eslint/eslint-plugin": ^5.52.0
   "@typescript-eslint/parser": ^5.52.0
   bson: ^4.7.2
+  byte-base64: ^1.1.0
   concurrently: ^7.6.0
   eslint: ^8.34.0
   husky: ^8.0.3
@@ -33,6 +34,7 @@ specifiers:
 
 dependencies:
   bson: 4.7.2
+  byte-base64: 1.1.0
   lodash.clonedeep: 4.5.0
   lz4js: 0.2.0
 
@@ -2598,6 +2600,13 @@ packages:
       }
     engines: { node: ">=6" }
     dev: true
+
+  /byte-base64/1.1.0:
+    resolution:
+      {
+        integrity: sha512-56cXelkJrVMdCY9V/3RfDxTh4VfMFCQ5km7B7GkIGfo4bcPL9aACyJLB0Ms3Ezu5rsHmLB2suis96z4fLM03DA==,
+      }
+    dev: false
 
   /callsites/3.1.0:
     resolution:

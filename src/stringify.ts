@@ -1,4 +1,5 @@
 import { EJSON } from 'bson';
+import { bytesToBase64 } from 'byte-base64';
 import cloneDeep from 'lodash.clonedeep';
 import { compress } from 'lz4js';
 import {
@@ -250,7 +251,5 @@ function minifyKeys(
 }
 
 export function compressString(str: string): string {
-  return Buffer.from(compress(new TextEncoder().encode(str))).toString(
-    'base64url'
-  );
+  return bytesToBase64(compress(new TextEncoder().encode(str)));
 }
