@@ -1,5 +1,5 @@
 import { EJSON } from 'bson';
-import { decompress } from 'lz4-wasm-nodejs';
+import { decompress } from 'lz4js';
 
 export type ParseTypeGuardFunction<T> = (obj: any) => obj is T;
 export type ParseReviverFunction = (this: any, key: string, value: any) => any;
@@ -163,7 +163,9 @@ function unminifyKeys(
 
 export function decompressString(str: string): string {
   try {
-    return new TextDecoder().decode(decompress(Buffer.from(str, 'base64')));
+    return new TextDecoder().decode(
+      Uint8Array.from(decompress(Buffer.from(str, 'base64')))
+    );
   } catch (err: unknown) {
     // str is not a base64 encoded string of a byte array
     return str;

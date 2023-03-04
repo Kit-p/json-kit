@@ -1,6 +1,6 @@
 import { EJSON } from 'bson';
 import cloneDeep from 'lodash.clonedeep';
-import { compress } from 'lz4-wasm-nodejs';
+import { compress } from 'lz4js';
 import {
   MINIFY_REMAINING_CANDIDATES,
   MINIFY_STARTING_CANDIDATES,
