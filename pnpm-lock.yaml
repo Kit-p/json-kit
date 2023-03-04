@@ -4,7 +4,6 @@ specifiers:
   "@commitlint/cli": ^17.4.4
   "@commitlint/config-conventional": ^17.4.4
   "@jest/globals": ^29.4.3
-  "@rollup/browser": ^3.17.2
   "@rollup/plugin-commonjs": ^24.0.1
   "@rollup/plugin-node-resolve": ^15.0.1
   "@rollup/plugin-typescript": ^11.0.0
@@ -41,7 +40,6 @@ devDependencies:
   "@commitlint/cli": 17.4.4_@swc+core@1.3.35
   "@commitlint/config-conventional": 17.4.4
   "@jest/globals": 29.4.3
-  "@rollup/browser": 3.17.2
   "@rollup/plugin-commonjs": 24.0.1_rollup@3.17.2
   "@rollup/plugin-node-resolve": 15.0.1_rollup@3.17.2
   "@rollup/plugin-typescript": 11.0.0_xfpw33j3x77vb3zt44uxqu5fey
@@ -1387,13 +1385,6 @@ packages:
     dependencies:
       "@pnpm/network.ca-file": 1.0.2
       config-chain: 1.1.13
-    dev: true
-
-  /@rollup/browser/3.17.2:
-    resolution:
-      {
-        integrity: sha512-KTbCVat/hIG5Dss1VOE7j4xLAlJcsDZNlLfj35ejXD7jXkgp877Aza+16w2vCtDbExZuqakhfwEYAP+YTNUVQA==,
-      }
     dev: true
 
   /@rollup/plugin-commonjs/24.0.1_rollup@3.17.2:
