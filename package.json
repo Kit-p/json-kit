@@ -43,7 +43,10 @@
     "src",
     "dist"
   ],
-  "repository": "github:Kit-p/json-kit/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kit-p/json-kit.git"
+  },
   "author": "Kit PANG",
   "license": "MIT",
   "bugs": {
