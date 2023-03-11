@@ -50,6 +50,11 @@
     "url": "https://github.com/kit-p/json-kit/issues"
   },
   "homepage": "https://github.com/kit-p/json-kit",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "packageManager": "pnpm@7.17.0",
   "dependencies": {
     "bson": "^4.7.2",
