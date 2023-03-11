@@ -23,6 +23,16 @@
           "commitsSort": ["subject", "scope"]
         }
       }
+    ],
+    "@semantic-release/npm",
+    [
+      "@semantic-release/github",
+      {
+        "assets": ["dist/**"],
+        "successComment": false,
+        "releaseLabels": ["<%= nextRelease.version %>"],
+        "addReleases": "bottom"
+      }
     ]
   ]
 }
