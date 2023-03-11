@@ -49,7 +49,7 @@
   "bugs": {
     "url": "https://github.com/kit-p/json-kit/issues"
   },
-  "homepage": "https://github.com/kit-p/json-kit/",
+  "homepage": "https://github.com/kit-p/json-kit",
   "packageManager": "pnpm@7.17.0",
   "dependencies": {
     "bson": "^4.7.2",
