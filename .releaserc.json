@@ -1,7 +1,7 @@
 {
   "branches": ["main"],
   "tagFormat": "v${version}",
-  "repositoryUrl": "https://github.com/Kit-p/json-kit/",
+  "repositoryUrl": "https://github.com/Kit-p/json-kit",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
