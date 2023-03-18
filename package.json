@@ -1,6 +1,6 @@
 {
   "name": "@kit-p/json-kit",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "description": "JSON Toolkit for (de)serialization | (un)minification | (de)compression",
   "engines": {
     "node": ">=16",
