@@ -48,8 +48,8 @@ jobs:
             docs/CHANGELOG.md
             package.json
           commit-message: "chore(release): bump version and update CHANGELOG.md [skip ci]"
-          committer: release-bot <noreply@github.com>
+          committer: "release-bot <noreply@github.com>"
           branch: release
           delete-branch: true
-          title: "chore(release): bump version and update CHANGELOG.md"
+          title: "chore(release): bump version and update CHANGELOG.md [skip ci]"
           body: "This PR bumps the version in `package.json` and updates `docs/CHANGELOG.md`."
