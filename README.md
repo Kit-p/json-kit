@@ -19,18 +19,64 @@
 
 ---
 
+## Project State
+
+> This project is in **early development** phase. The APIs are subject to change. Please do **NOT** use in production environments.
+
 ## Installation
 
-`TODO`
+### For Node.js:
 
-## Features
+- `npm install @kit-p/json-kit`
+- `yarn add @kit-p/json-kit`
+- `pnpm add @kit-p/json-kit`
 
-`TODO`
+#### _CommonJS_
 
-## Usage
+```js
+const { JsonKit } = require("@kit-p/json-kit");
+```
 
-`TODO`
+#### _ESM_
+
+```js
+import { JsonKit } from "@kit-p/json-kit";
+```
+
+### For browsers:
+
+#### _CommonJS_
+
+- ```html
+  <script src="https://cdn.jsdelivr.net/npm/@kit-p/json-kit"></script>
+  <script>
+    console.log(JsonKit);
+  </script>
+  ```
+- ```html
+  <script src="https://unpkg.com/@kit-p/json-kit"></script>
+  <script>
+    console.log(JsonKit);
+  </script>
+  ```
+
+#### _ESM_
+
+- ```html
+  <script type="module">
+    import { JsonKit } from "https://cdn.jsdelivr.net/npm/@kit-p/json-kit/+esm";
+  </script>
+  ```
+- ```html
+  <script type="module">
+    import { JsonKit } from "https://unpkg.com/@kit-p/json-kit?module";
+  </script>
+  ```
 
 ## License
 
 MIT
+
+```
+
+```
