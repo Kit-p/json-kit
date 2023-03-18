@@ -7,9 +7,9 @@
     "pnpm": "^7.14.2"
   },
   "type": "module",
-  "main": "dist/index.umd.min.js",
+  "main": "dist/index.umd.min.cjs",
   "types": "dist/index.d.ts",
-  "module": "dist/index.esm.min.js",
+  "module": "dist/index.esm.min.mjs",
   "keywords": [
     "json",
     "utility",
@@ -19,8 +19,8 @@
   ],
   "exports": {
     ".": {
-      "require": "./dist/index.umd.min.js",
-      "import": "./dist/index.esm.min.js"
+      "require": "./dist/index.umd.min.cjs",
+      "import": "./dist/index.esm.min.mjs"
     }
   },
   "scripts": {
@@ -34,8 +34,8 @@
     "build:types": "tsc -d --emitDeclarationOnly",
     "build:js": "rollup -c rollup.config.mjs && pnpm run minify",
     "minify": "concurrently \"pnpm:minify:*\"",
-    "minify:umd": "terser dist/index.umd.js --compress --mangle > dist/index.umd.min.js",
-    "minify:esm": "terser dist/index.esm.js --compress --mangle > dist/index.esm.min.js",
+    "minify:umd": "terser dist/index.umd.cjs --compress --mangle > dist/index.umd.min.cjs",
+    "minify:esm": "terser dist/index.esm.mjs --compress --mangle > dist/index.esm.min.mjs",
     "pre-release": "pnpm run lint && pnpm run test && pnpm run build",
     "semantic-release": "semantic-release"
   },
@@ -72,6 +72,8 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.2",
     "@swc/core": "^1.3.35",
     "@swc/jest": "^0.2.24",
