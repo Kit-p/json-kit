@@ -41,3 +41,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: rm -rf dist && pnpm run pre-release && pnpm run semantic-release
+      - name: Bump package version
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-paths: |
+            docs/CHANGELOG.md
+            package.json
+          commit-message: "chore(release): bump version and update CHANGELOG.md [skip ci]"
+          committer: release-bot <noreply@github.com>
+          branch: release
+          delete-branch: true
+          title: "chore(release): bump version and update CHANGELOG.md"
+          body: "This PR bumps the version in `package.json` and updates `docs/CHANGELOG.md`."
