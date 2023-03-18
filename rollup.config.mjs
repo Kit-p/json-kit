@@ -12,7 +12,8 @@ const config = {
     {
       file: "dist/index.umd.cjs",
       format: "umd",
-      name: "JsonKit",
+      name: "window",
+      extend: true,
     },
   ],
   plugins: [
