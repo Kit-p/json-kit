@@ -6,11 +6,11 @@ const config = {
   input: "src/index.ts",
   output: [
     {
-      file: "dist/index.esm.js",
+      file: "dist/index.esm.mjs",
       format: "es",
     },
     {
-      file: "dist/index.umd.js",
+      file: "dist/index.umd.cjs",
       format: "umd",
       name: "JsonKit",
     },
