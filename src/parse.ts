@@ -1,5 +1,5 @@
 import { EJSON } from 'bson';
-import { base64ToBytes } from 'byte-base64';
+import { Base64 } from 'js-base64';
 import { decompress } from 'lz4js';
 
 export type ParseTypeGuardFunction<T> = (obj: any) => obj is T;
@@ -165,7 +165,7 @@ function unminifyKeys(
 export function decompressString(str: string): string {
   try {
     return new TextDecoder().decode(
-      Uint8Array.from(decompress(base64ToBytes(str)))
+      Uint8Array.from(decompress(Base64.toUint8Array(str)))
     );
   } catch (err: unknown) {
     // str is not a base64 encoded string of a byte array
