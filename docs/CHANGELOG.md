@@ -1,3 +1,13 @@
+## [1.1.0](https://github.com/Kit-p/json-kit/compare/v1.0.3...v1.1.0) (2023-03-23)
+
+### Features
+
+- output and accept base64url instead of base64 ([#30](https://github.com/Kit-p/json-kit/issues/30)) ([f0a2362](https://github.com/Kit-p/json-kit/commit/f0a23622301192cee709f56da124db4a36e3c784))
+
+### Bug Fixes
+
+- **ci:** update GitHub Actions ([#29](https://github.com/Kit-p/json-kit/issues/29)) ([d7c1408](https://github.com/Kit-p/json-kit/commit/d7c1408b4f395af9295c0da029e564944376e0cd))
+
 ## [1.0.3](https://github.com/Kit-p/json-kit/compare/v1.0.2...v1.0.3) (2023-03-18)
 
 ### Bug Fixes
