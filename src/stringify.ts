@@ -252,6 +252,7 @@ function minifyKeys(
 
 export function compressString(str: string): string {
   return Base64.fromUint8Array(
-    compress(new TextEncoder().encode(str)) as Uint8Array
+    compress(new TextEncoder().encode(str)) as Uint8Array,
+    true
   );
 }
