@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Kit-p/json-kit/compare/v1.1.0...v1.1.1) (2023-03-25)
+
+### Bug Fixes
+
+- **stringify:** use base64url as compression output ([#33](https://github.com/Kit-p/json-kit/issues/33)) ([328c3f7](https://github.com/Kit-p/json-kit/commit/328c3f7945ff7d97c11adaad9a321f9633a22606)), closes [#32](https://github.com/Kit-p/json-kit/issues/32)
+
 ## [1.1.0](https://github.com/Kit-p/json-kit/compare/v1.0.3...v1.1.0) (2023-03-23)
 
 ### Features
