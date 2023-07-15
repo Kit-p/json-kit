@@ -1,6 +1,6 @@
 import { describe, it } from '@jest/globals';
-import { JsonKit } from '../src';
-import { formatDuration, timer } from './util';
+import { JsonKit } from '../src/index.js';
+import { formatDuration, timer } from './util/index.js';
 
 const test = (data: any): void => {
   const [original, originalStringifyDuration] = timer(() =>

@@ -14,5 +14,12 @@
     ],
     "@typescript-eslint/no-explicit-any": "off"
   },
-  "ignorePatterns": ["node_modules", "dist", "coverage", "test/dataset"]
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "docs",
+    "coverage",
+    "test/dataset",
+    "*.cjs"
+  ]
 }
