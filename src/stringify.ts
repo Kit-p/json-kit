@@ -5,7 +5,7 @@ import { compress } from 'lz4js';
 import {
   MINIFY_REMAINING_CANDIDATES,
   MINIFY_STARTING_CANDIDATES,
-} from './constants';
+} from './constants.js';
 
 export type StringifyReplacerArray = (string | number)[];
 export type StringifyReplacerFunction = (
@@ -166,19 +166,16 @@ function reverseKeyMap(keyMap: Record<string, string>): Record<string, string> {
 
 function getMinifyKeyMap<T>(obj: T): Record<string, string> {
   const keyMap: Record<string, string> = {};
-  const keyCounts: Record<string, number> = findAllJsonKeys(obj);
+  const keyCounts: Readonly<Record<string, number>> = findAllJsonKeys(obj);
 
-  const allKeys = Object.keys(keyCounts);
   const startChoices = MINIFY_STARTING_CANDIDATES.length;
   const remainChoices = MINIFY_REMAINING_CANDIDATES.length;
   let idx = 0;
-  for (let i = 0; i < allKeys.length; i++) {
-    const key = allKeys[i];
-
+  for (const [key, keyCount] of Object.entries(keyCounts)) {
     let minifiedKey: string;
     do {
       if (idx < startChoices - 1) {
-        minifiedKey = MINIFY_STARTING_CANDIDATES[idx];
+        minifiedKey = `${MINIFY_STARTING_CANDIDATES[idx]}`;
       } else {
         const _idx = idx - startChoices + 1;
         const startIdx = Math.floor(_idx / remainChoices);
@@ -188,7 +185,7 @@ function getMinifyKeyMap<T>(obj: T): Record<string, string> {
       ++idx;
     } while (keyCounts[minifiedKey] != null);
 
-    if (key.length * (keyCounts[key] - 1) < minifiedKey.length * 2) {
+    if (key.length * (keyCount - 1) < minifiedKey.length * 2) {
       // optimization for short keys
       --idx;
       continue;

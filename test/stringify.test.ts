@@ -1,10 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { EJSON } from 'bson';
-import { JsonKit } from '../src';
+import { JsonKit } from '../src/index.js';
 import type {
   StringifyReplacerArray,
   StringifyReplacerFunction,
-} from '../src/stringify';
+} from '../src/stringify.js';
 
 describe('[stringify] basic', () => {
   const obj = {

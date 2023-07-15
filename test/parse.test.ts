@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { EJSON } from 'bson';
-import { JsonKit } from '../src';
-import type { ParseReviverFunction } from '../src/parse';
+import { JsonKit } from '../src/index.js';
+import type { ParseReviverFunction } from '../src/parse.js';
 
 describe('[parse] basic', () => {
   const text =

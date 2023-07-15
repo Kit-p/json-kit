@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { JsonKit } from '../src';
+import { JsonKit } from '../src/index.js';
 
 describe('[serialize] serialize', () => {
   const obj = {

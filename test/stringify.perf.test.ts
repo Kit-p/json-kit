@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { describe, it } from '@jest/globals';
-import { JsonKit } from '../src';
-import { formatDuration, timer } from './util';
+import { JsonKit } from '../src/index.js';
+import { formatDuration, timer } from './util/index.js';
 
 const test = (data: any): void => {
   const [original, originalDuration] = timer(() => JSON.stringify(data));
@@ -56,12 +57,12 @@ const test = (data: any): void => {
 
 describe('[stringify] performance', () => {
   it('stringify with ~650KB json data', async () => {
-    const data = await import('./dataset/ne_110m_populated_places.json');
+    const data = require('./dataset/ne_110m_populated_places.json');
     test(data);
   });
 
   it('stringify with ~50MB json data', async () => {
-    const data = await import('./dataset/ne_10m_roads.json');
+    const data = require('./dataset/ne_10m_roads.json');
     test(data);
   });
 });

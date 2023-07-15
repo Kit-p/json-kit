@@ -1,25 +1,32 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "esnext",
-    "outDir": "dist",
-    "rootDir": "src",
-    "strict": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": "./src",
+    "incremental": true,
+    "verbatimModuleSyntax": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "exactOptionalPropertyTypes": false,
+    "importHelpers": true,
+    "allowArbitraryExtensions": false,
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "checkJs": false
   },
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "**/*.config.ts"
-  ]
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist", "docs", "coverage"]
 }

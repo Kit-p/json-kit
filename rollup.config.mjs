@@ -17,7 +17,7 @@ const config = {
     },
   ],
   plugins: [
-    typescript(),
+    typescript({ tsconfig: "tsconfig.build.json", cacheDir: ".cache" }),
     commonjs({ include: /node_modules/ }),
     nodeResolve({ browser: true, preferBuiltins: false }),
   ],
