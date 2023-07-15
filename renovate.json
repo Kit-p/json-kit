@@ -8,5 +8,6 @@
     "npm:unpublishSafe",
     ":assignAndReview(Kit-p)",
     "schedule:monthly"
-  ]
+  ],
+  "postUpdateOptions": ["pnpmDedupe"]
 }
