@@ -42,7 +42,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: rm -rf dist && pnpm run pre-release && pnpm run semantic-release
       - name: Bump package version
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           add-paths: |
             CHANGELOG.md
