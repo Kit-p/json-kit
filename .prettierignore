@@ -1,7 +1,12 @@
-dist
-docs
-coverage
-test/dataset
+.husky/
+node_modules/
+dist/
+docs/
+coverage/
+test/dataset/
+.editorconfig
+.gitignore
+.prettierignore
 pnpm-lock.yaml
 CHANGELOG.md
 LICENSE
