@@ -5,6 +5,7 @@
     "outDir": "./dist",
     "rootDir": ".",
     "baseUrl": "./src",
+    "incremental": true,
     "verbatimModuleSyntax": true,
     "strictNullChecks": true,
     "alwaysStrict": true,
