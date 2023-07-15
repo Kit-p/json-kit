@@ -31,7 +31,7 @@
     "lint:types": "tsc --noEmit",
     "lint:js": "eslint src",
     "build": "concurrently \"pnpm:build:*\"",
-    "build:types": "tsc -d --emitDeclarationOnly",
+    "build:types": "tsc -d --emitDeclarationOnly -p ./tsconfig.build.json",
     "build:js": "rollup -c rollup.config.mjs && pnpm run minify",
     "minify": "concurrently \"pnpm:minify:*\"",
     "minify:umd": "terser dist/index.umd.cjs --compress --mangle > dist/index.umd.min.cjs",
