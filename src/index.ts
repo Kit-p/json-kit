@@ -1,7 +1,9 @@
-import * as Stringify from './stringify';
 import * as Parse from './parse';
+import * as Serialize from './serialize';
+import * as Stringify from './stringify';
 
 export const JsonKit = {
-  ...Stringify,
   ...Parse,
+  ...Serialize,
+  ...Stringify,
 } as const;
