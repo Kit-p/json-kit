@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:js-lib",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":semanticCommitScope(deps)",
+    "mergeConfidence:all-badges",
+    "npm:unpublishSafe",
+    ":assignAndReview(Kit-p)",
+    "schedule:monthly"
+  ]
+}
