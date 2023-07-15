@@ -4,7 +4,7 @@
   "description": "JSON Toolkit for (de)serialization | (un)minification | (de)compression",
   "engines": {
     "node": ">=16",
-    "pnpm": "^7.14.2"
+    "pnpm": "^8.6.7"
   },
   "type": "module",
   "main": "dist/index.umd.min.cjs",
@@ -58,7 +58,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "packageManager": "pnpm@7.17.0",
+  "packageManager": "pnpm@8.6.7",
   "dependencies": {
     "bson": "^4.7.2",
     "js-base64": "^3.7.5",
