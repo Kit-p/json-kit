@@ -2,3 +2,6 @@ dist
 docs
 coverage
 test/dataset
+pnpm-lock.yaml
+CHANGELOG.md
+LICENSE
