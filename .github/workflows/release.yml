@@ -45,7 +45,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           add-paths: |
-            docs/CHANGELOG.md
+            CHANGELOG.md
             package.json
           commit-message: "chore(release): bump version and update CHANGELOG.md [skip ci]"
           committer: "release-bot <noreply@github.com>"
