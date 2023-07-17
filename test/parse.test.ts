@@ -181,7 +181,8 @@ describe('[parse] type guard', () => {
   };
 
   const typeGuard = (obj: any): obj is TestObject => {
-    return typeof obj?.a === 'number' && typeof obj?.b === 'string';
+    const _obj: Partial<TestObject> | null | undefined = obj;
+    return typeof _obj?.a === 'number' && typeof _obj?.b === 'string';
   };
 
   it('parse with type guard passing', () => {
@@ -189,7 +190,6 @@ describe('[parse] type guard', () => {
     expect(() =>
       JsonKit.parse<TestObject>(
         text,
-        null,
         { extended: false, unminify: false, decompress: false },
         typeGuard,
       ),
@@ -201,7 +201,6 @@ describe('[parse] type guard', () => {
     expect(() =>
       JsonKit.parse<TestObject>(
         text,
-        null,
         { extended: false, unminify: false, decompress: false },
         typeGuard,
       ),
