@@ -88,7 +88,6 @@
     "eslint": "8.45.0",
     "husky": "8.0.3",
     "jest": "29.6.1",
-    "lint-staged": "13.2.3",
     "prettier": "3.0.0",
     "renovate": "36.8.11",
     "rollup": "3.26.2",
@@ -104,8 +103,5 @@
         "marked-terminal@5>marked": "5"
       }
     }
-  },
-  "lint-staged": {
-    "*": "prettier --write"
   }
 }
