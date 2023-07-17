@@ -173,7 +173,7 @@ function reverseKeyMap(keyMap: Record<string, string>): Record<string, string> {
   return reversedKeyMap;
 }
 
-function getMinifyKeyMap<T>(obj: T): Record<string, string> {
+function getMinifyKeyMap(obj: any): Record<string, string> {
   const keyMap: Record<string, string> = {};
   const keyCounts: Readonly<Record<string, number>> = findAllJsonKeys(obj);
 
