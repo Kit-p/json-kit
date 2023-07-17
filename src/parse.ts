@@ -23,7 +23,7 @@ const defaultOptions: _ParseOptions = {
   decompress: { enable: true },
 };
 
-function mergeWithDefaultOptions(input?: ParseOptions): _ParseOptions {
+function mergeWithDefaultOptions(input?: ParseOptions | null): _ParseOptions {
   if (input == null) return defaultOptions;
 
   if (input.extended == null) {
@@ -71,16 +71,35 @@ function mergeWithDefaultOptions(input?: ParseOptions): _ParseOptions {
 
 export function parse<T = any>(
   text: string,
+  reviver?: ParseReviverFunction | null,
+  options?: ParseOptions | null,
+  typeGuard?: TypeGuardFunction<T>,
+): T;
+export function parse<T = any>(
+  text: string,
+  options?: ParseOptions | null,
+  typeGuard?: TypeGuardFunction<T>,
+): T;
+export function parse<T = any>(
+  text: string,
   reviver?: ParseReviverFunction | ParseOptions | null,
-  options?: ParseOptions,
+  options?: ParseOptions | TypeGuardFunction<T> | null,
   typeGuard?: TypeGuardFunction<T>,
 ): T {
-  let _reviver: ParseReviverFunction | undefined = undefined;
+  let _reviver: ParseReviverFunction | undefined;
   if (typeof reviver === 'function') {
     _reviver = reviver satisfies ParseReviverFunction;
   } else if (options == null) {
     options = (reviver ?? undefined) satisfies ParseOptions | undefined;
     reviver = undefined;
+  }
+
+  let _typeGuard: TypeGuardFunction<T> | undefined;
+  if (typeof options === 'function') {
+    _typeGuard = options satisfies TypeGuardFunction<T>;
+    options = undefined;
+  } else {
+    _typeGuard = typeGuard;
   }
 
   const _options = mergeWithDefaultOptions(options);
@@ -107,7 +126,7 @@ export function parse<T = any>(
   }
 
   try {
-    if (typeGuard?.(result) === false) {
+    if (_typeGuard?.(result) === false) {
       throw new Error(
         'Please throw a custom error in the type guard function to track the problems',
       );

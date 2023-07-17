@@ -32,7 +32,9 @@ const defaultOptions: _StringifyOptions = {
   compress: { enable: false },
 };
 
-function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
+function mergeWithDefaultOptions(
+  input?: StringifyOptions | null,
+): _StringifyOptions {
   if (input == null) return defaultOptions;
 
   if (input.extended == null) {
@@ -80,13 +82,20 @@ function mergeWithDefaultOptions(input?: StringifyOptions): _StringifyOptions {
 
 export function stringify(
   obj: any,
+  replacer?: StringifyReplacerArray | StringifyReplacerFunction | null,
+  space?: string | number | null,
+  options?: StringifyOptions | null,
+): string;
+export function stringify(obj: any, options?: StringifyOptions | null): string;
+export function stringify(
+  obj: any,
   replacer?:
     | StringifyReplacerArray
     | StringifyReplacerFunction
     | StringifyOptions
     | null,
-  space?: string | number,
-  options?: StringifyOptions,
+  space?: string | number | null,
+  options?: StringifyOptions | null,
 ): string {
   let _replacer: any = undefined;
   if (Array.isArray(replacer)) {
@@ -143,11 +152,11 @@ export function stringify(
 
   let result: string;
   if (_options.extended.enable) {
-    result = EJSON.stringify(obj, _replacer, space, {
+    result = EJSON.stringify(obj, _replacer, space ?? undefined, {
       relaxed: _options.extended.relaxed,
     });
   } else {
-    result = JSON.stringify(obj, _replacer, space);
+    result = JSON.stringify(obj, _replacer, space ?? undefined);
   }
 
   if (_options.compress.enable) {
