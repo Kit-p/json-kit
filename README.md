@@ -76,7 +76,3 @@ import { JsonKit } from "@kit-p/json-kit";
 ## License
 
 MIT
-
-```
-
-```
