@@ -1,0 +1,74 @@
+name: Publish
+
+on:
+  release:
+    types: ["released"]
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        type: string
+        required: true
+
+jobs:
+  build_and_publish_wiki:
+    name: Build and Publish GitHub Wiki
+    runs-on: ubuntu-latest
+    environment: Publish
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build documentations
+        run: pnpm exec concurrently "pnpm:build:docs:site" "pnpm:build:docs:wiki"
+      - name: Publish GitHub Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          commit-message: "chore(publish): GitHub Wiki for ${{ inputs.version || github.ref_name || github.sha }} [skip ci]"
+      - name: Upload GitHub Pages Artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "site/"
+  publish_pages:
+    name: Publish GitHub Pages
+    needs: build_and_publish_wiki
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v3
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

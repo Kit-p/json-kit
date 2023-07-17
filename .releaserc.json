@@ -20,17 +20,25 @@
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
         },
         "writerOpts": {
-          "commitsSort": ["subject", "scope"]
+          "commitsSort": ["scope", "type", "subject"]
         }
       }
     ],
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
     [
-      "@semantic-release/changelog",
+      "@semantic-release/exec",
       {
-        "changelogFile": "CHANGELOG.md"
+        "prepareCmd": "pnpm run build:docs:md"
       }
     ],
-    "@semantic-release/npm",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json", "CHANGELOG.md", "docs/"],
+        "message": "chore(release): release v${nextRelease.version} [skip ci]"
+      }
+    ],
     [
       "@semantic-release/github",
       {

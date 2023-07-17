@@ -1,11 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["src/index.ts"],
-  "out": "docs",
+  "out": "site",
   "tsconfig": "./tsconfig.build.json",
-  "excludeInternal": false,
-  "excludePrivate": false,
-  "useTsLinkResolution": false,
+  "includeVersion": true,
+  "excludeInternal": true,
+  "excludePrivate": true,
   "validation": {
     "notExported": true,
     "invalidLink": true,
