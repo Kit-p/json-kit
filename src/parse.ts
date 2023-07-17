@@ -69,18 +69,18 @@ function mergeWithDefaultOptions(input?: ParseOptions | null): _ParseOptions {
   return input as _ParseOptions;
 }
 
-export function parse<T>(
+export function parse<const T>(
   text: string,
   reviver?: ParseReviverFunction | null,
   options?: ParseOptions | null,
   typeGuard?: TypeGuardFunction<T>,
 ): T;
-export function parse<T>(
+export function parse<const T>(
   text: string,
   options?: ParseOptions | null,
   typeGuard?: TypeGuardFunction<T>,
 ): T;
-export function parse<T>(
+export function parse<const T>(
   text: string,
   reviver?: ParseReviverFunction | ParseOptions | null,
   options?: ParseOptions | TypeGuardFunction<T> | null,

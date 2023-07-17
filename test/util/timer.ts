@@ -2,8 +2,8 @@
  * @param target target function to measure
  * @returns Array of [result, durationInMs]
  */
-export function timer<T>(target: () => T): [T, number];
-export async function timer<T extends Promise<any>>(
+export function timer<const T>(target: () => T): [T, number];
+export async function timer<const T extends Promise<any>>(
   target: () => T,
 ): Promise<[Awaited<T>, number]>;
 export function timer(

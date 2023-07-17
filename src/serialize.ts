@@ -2,7 +2,7 @@ import { parse } from './parse.js';
 import { stringify } from './stringify.js';
 import type { TypeGuardFunction } from './types.js';
 
-export function serialize<T>(obj: any, typeGuard?: TypeGuardFunction<T>) {
+export function serialize<const T>(obj: any, typeGuard?: TypeGuardFunction<T>) {
   return parse(
     stringify(obj, {
       extended: { enable: true, relaxed: true },
@@ -19,7 +19,10 @@ export function serialize<T>(obj: any, typeGuard?: TypeGuardFunction<T>) {
   );
 }
 
-export function deserialize<T>(obj: any, typeGuard?: TypeGuardFunction<T>) {
+export function deserialize<const T>(
+  obj: any,
+  typeGuard?: TypeGuardFunction<T>,
+) {
   return parse(
     stringify(obj, {
       extended: { enable: false },
