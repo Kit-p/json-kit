@@ -34,6 +34,7 @@
     "format": "eslint --fix --ext .ts . && prettier --write .",
     "build": "concurrently \"pnpm:build:*\"",
     "build:types": "tsc -d --emitDeclarationOnly -p ./tsconfig.build.json",
+    "build:docs": "typedoc",
     "build:js": "rollup -c rollup.config.mjs && pnpm run minify",
     "minify": "concurrently \"pnpm:minify:*\"",
     "minify:umd": "terser dist/index.umd.cjs --compress --mangle > dist/index.umd.min.cjs",
@@ -95,6 +96,7 @@
     "terser": "5.19.0",
     "ts-jest": "29.1.1",
     "tslib": "2.6.0",
+    "typedoc": "0.24.8",
     "typescript": "5.1.6"
   },
   "pnpm": {
