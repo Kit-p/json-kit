@@ -1,8 +1,8 @@
 import { EJSON } from 'bson';
 import { Base64 } from 'js-base64';
 import { decompress } from 'lz4js';
+import type { TypeGuardFunction } from './types.js';
 
-export type ParseTypeGuardFunction<T> = (obj: any) => obj is T;
 export type ParseReviverFunction = (this: any, key: string, value: any) => any;
 
 export type ParseOptions = {
@@ -73,7 +73,7 @@ export function parse<T = any>(
   text: string,
   reviver?: ParseReviverFunction | ParseOptions | null,
   options?: ParseOptions,
-  typeGuard?: ParseTypeGuardFunction<T>,
+  typeGuard?: TypeGuardFunction<T>,
 ): T {
   let _reviver: ParseReviverFunction | undefined = undefined;
   if (typeof reviver === 'function') {
