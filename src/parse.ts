@@ -5,17 +5,17 @@ import { decompress } from 'lz4js';
 export type ParseTypeGuardFunction<T> = (obj: any) => obj is T;
 export type ParseReviverFunction = (this: any, key: string, value: any) => any;
 
-export interface ParseOptions {
+export type ParseOptions = {
   extended?: boolean | { enable: boolean; relaxed?: boolean };
   unminify?: boolean | { enable: boolean; keyMap?: Record<string, string> };
   decompress?: boolean | { enable: boolean };
-}
+};
 
-interface _ParseOptions {
+type _ParseOptions = {
   extended: { enable: boolean; relaxed: boolean };
   unminify: { enable: boolean; keyMap?: Record<string, string> };
   decompress: { enable: boolean };
-}
+};
 
 const defaultOptions: _ParseOptions = {
   extended: { enable: false, relaxed: true },

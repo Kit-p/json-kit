@@ -175,10 +175,10 @@ describe('[parse] decompress', () => {
 });
 
 describe('[parse] type guard', () => {
-  interface TestObject {
+  type TestObject = {
     a: number;
     b: string;
-  }
+  };
 
   const typeGuard = (obj: any): obj is TestObject => {
     return typeof obj?.a === 'number' && typeof obj?.b === 'string';

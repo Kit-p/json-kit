@@ -14,17 +14,17 @@ export type StringifyReplacerFunction = (
   value: any,
 ) => any;
 
-export interface StringifyOptions {
+export type StringifyOptions = {
   extended?: boolean | { enable: boolean; relaxed?: boolean };
   minify?: boolean | { enable: boolean; keyMap?: Record<string, string> };
   compress?: boolean | { enable: boolean };
-}
+};
 
-interface _StringifyOptions {
+type _StringifyOptions = {
   extended: { enable: boolean; relaxed: boolean };
   minify: { enable: boolean; keyMap: Record<string, string> | undefined };
   compress: { enable: boolean };
-}
+};
 
 const defaultOptions: _StringifyOptions = {
   extended: { enable: false, relaxed: true },
