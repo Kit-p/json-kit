@@ -5,27 +5,27 @@ import { formatDuration, timer } from './util/index.js';
 
 const test = (data: any): void => {
   const [original, originalStringifyDuration] = timer(() =>
-    JSON.stringify(data)
+    JSON.stringify(data),
   );
   const [, originalDuration] = timer(() => JSON.parse(original));
 
   const [basic, basicStringifyDuration] = timer(() => JsonKit.stringify(data));
   const [, basicDuration] = timer(() =>
-    JsonKit.parse(basic, { unminify: false, decompress: false })
+    JsonKit.parse(basic, { unminify: false, decompress: false }),
   );
 
   const [minified, minifiedStringifyDuration] = timer(() =>
-    JsonKit.stringify(data, { minify: true })
+    JsonKit.stringify(data, { minify: true }),
   );
   const [, unminifiedDuration] = timer(() =>
-    JsonKit.parse(minified, { unminify: true, decompress: false })
+    JsonKit.parse(minified, { unminify: true, decompress: false }),
   );
 
   const [compressed, compressedStringifyDuration] = timer(() =>
-    JsonKit.stringify(data, { compress: true })
+    JsonKit.stringify(data, { compress: true }),
   );
   const [, decompressedDuration] = timer(() =>
-    JsonKit.parse(compressed, { unminify: false, decompress: true })
+    JsonKit.parse(compressed, { unminify: false, decompress: true }),
   );
 
   const [minifiedAndCompressed, minifiedAndCompressedStringifyDuration] = timer(
@@ -33,21 +33,21 @@ const test = (data: any): void => {
       JsonKit.stringify(data, {
         minify: true,
         compress: true,
-      })
+      }),
   );
   const [, unminifiedAndDecompressedDuration] = timer(() =>
     JsonKit.parse(minifiedAndCompressed, {
       unminify: true,
       decompress: true,
-    })
+    }),
   );
 
   console.info(
     `baseline: [parse: ${formatDuration(
-      originalDuration
+      originalDuration,
     )} (±0.00%)] [stringify: ${formatDuration(
-      originalStringifyDuration
-    )} (±0.00%)]`
+      originalStringifyDuration,
+    )} (±0.00%)]`,
   );
 
   console.info(
@@ -58,7 +58,7 @@ const test = (data: any): void => {
       ((basicStringifyDuration - originalStringifyDuration) /
         originalStringifyDuration) *
       100
-    ).toFixed(2)}%)]`
+    ).toFixed(2)}%)]`,
   );
 
   console.info(
@@ -66,12 +66,12 @@ const test = (data: any): void => {
       ((unminifiedDuration - originalDuration) / originalDuration) *
       100
     ).toFixed(2)}%)] [stringify: ${formatDuration(
-      minifiedStringifyDuration
+      minifiedStringifyDuration,
     )} (${(
       ((minifiedStringifyDuration - originalStringifyDuration) /
         originalStringifyDuration) *
       100
-    ).toFixed(2)}%)]`
+    ).toFixed(2)}%)]`,
   );
 
   console.info(
@@ -79,28 +79,28 @@ const test = (data: any): void => {
       ((decompressedDuration - originalDuration) / originalDuration) *
       100
     ).toFixed(2)}%)] [stringify: ${formatDuration(
-      compressedStringifyDuration
+      compressedStringifyDuration,
     )} (${(
       ((compressedStringifyDuration - originalStringifyDuration) /
         originalStringifyDuration) *
       100
-    ).toFixed(2)}%)]`
+    ).toFixed(2)}%)]`,
   );
 
   console.info(
     `unminify + decompress: [parse: ${formatDuration(
-      unminifiedAndDecompressedDuration
+      unminifiedAndDecompressedDuration,
     )} (${(
       ((unminifiedAndDecompressedDuration - originalDuration) /
         originalDuration) *
       100
     ).toFixed(2)}%)] [stringify: ${formatDuration(
-      minifiedAndCompressedStringifyDuration
+      minifiedAndCompressedStringifyDuration,
     )} (${(
       ((minifiedAndCompressedStringifyDuration - originalStringifyDuration) /
         originalStringifyDuration) *
       100
-    ).toFixed(2)}%)]`
+    ).toFixed(2)}%)]`,
   );
 };
 

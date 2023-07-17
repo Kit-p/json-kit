@@ -11,7 +11,7 @@ export type StringifyReplacerArray = (string | number)[];
 export type StringifyReplacerFunction = (
   this: any,
   key: string,
-  value: any
+  value: any,
 ) => any;
 
 export interface StringifyOptions {
@@ -86,7 +86,7 @@ export function stringify(
     | StringifyOptions
     | null,
   space?: string | number,
-  options?: StringifyOptions
+  options?: StringifyOptions,
 ): string {
   let _replacer: any = undefined;
   if (Array.isArray(replacer)) {
@@ -199,7 +199,7 @@ function getMinifyKeyMap<T>(obj: T): Record<string, string> {
 
 function findAllJsonKeys(
   obj: any,
-  keyCounts: Record<string, number> = {}
+  keyCounts: Record<string, number> = {},
 ): Record<string, number> {
   if (Array.isArray(obj)) {
     obj.forEach((o) => {
@@ -219,7 +219,7 @@ function findAllJsonKeys(
 function minifyKeys(
   obj: any,
   keyMap: Record<string, string>,
-  level?: number
+  level?: number,
 ): any {
   let _level: number;
   if (level == null || level === 0) {
@@ -250,6 +250,6 @@ function minifyKeys(
 export function compressString(str: string): string {
   return Base64.fromUint8Array(
     compress(new TextEncoder().encode(str)) as Uint8Array,
-    true
+    true,
   );
 }

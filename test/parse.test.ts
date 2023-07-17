@@ -13,7 +13,7 @@ describe('[parse] basic', () => {
     expect(JsonKit.parse(text)).toStrictEqual(JSON.parse(text));
 
     expect(JsonKit.parse(text, reviver)).toStrictEqual(
-      JSON.parse(text, reviver)
+      JSON.parse(text, reviver),
     );
   });
 
@@ -21,15 +21,15 @@ describe('[parse] basic', () => {
     const reviver: ParseReviverFunction = () => 'test';
 
     expect(
-      JsonKit.parse(text, { extended: { enable: true, relaxed: false } })
+      JsonKit.parse(text, { extended: { enable: true, relaxed: false } }),
     ).toStrictEqual(EJSON.parse(text, { relaxed: false }));
 
     expect(
-      JsonKit.parse(text, { extended: { enable: true, relaxed: true } })
+      JsonKit.parse(text, { extended: { enable: true, relaxed: true } }),
     ).toStrictEqual(EJSON.parse(text, { relaxed: true }));
 
     expect(JsonKit.parse(text, reviver, { extended: true })).toStrictEqual(
-      EJSON.parse(text)
+      EJSON.parse(text),
     );
   });
 
@@ -86,7 +86,7 @@ describe('[parse] unminify', () => {
     expect(
       JsonKit.parse(text, (key, value) => (key !== 'arr' ? value : undefined), {
         unminify: { enable: true, keyMap: undefined },
-      })
+      }),
     ).toStrictEqual({
       'very-long-name': obj['very-long-name'],
       normal: obj['normal'],
@@ -102,7 +102,7 @@ describe('[parse] unminify', () => {
           enable: true,
           keyMap: { vln: 'very-long-name', vln2: 'very-long-name-2' },
         },
-      })
+      }),
     ).toStrictEqual(obj);
   });
 });
@@ -130,11 +130,11 @@ describe('[parse] decompress', () => {
     const reviver: ParseReviverFunction = () => 'test';
 
     expect(JsonKit.parse(text, { decompress: true })).toStrictEqual(
-      JSON.parse(JsonKit.decompressString(text))
+      JSON.parse(JsonKit.decompressString(text)),
     );
 
     expect(JsonKit.parse(text, reviver, { decompress: true })).toStrictEqual(
-      JSON.parse(JsonKit.decompressString(text), reviver)
+      JSON.parse(JsonKit.decompressString(text), reviver),
     );
   });
 
@@ -154,22 +154,22 @@ describe('[parse] decompress', () => {
       JsonKit.parse(text, {
         extended: { enable: true, relaxed: false },
         decompress: { enable: true },
-      })
+      }),
     ).toStrictEqual(
-      EJSON.parse(JsonKit.decompressString(text), { relaxed: false })
+      EJSON.parse(JsonKit.decompressString(text), { relaxed: false }),
     );
 
     expect(
       JsonKit.parse(textRelaxed, {
         extended: { enable: true, relaxed: true },
         decompress: { enable: true },
-      })
+      }),
     ).toStrictEqual(
-      EJSON.parse(JsonKit.decompressString(textRelaxed), { relaxed: true })
+      EJSON.parse(JsonKit.decompressString(textRelaxed), { relaxed: true }),
     );
 
     expect(
-      JsonKit.parse(textRelaxed, reviver, { extended: true, decompress: true })
+      JsonKit.parse(textRelaxed, reviver, { extended: true, decompress: true }),
     ).toStrictEqual(EJSON.parse(JsonKit.decompressString(textRelaxed)));
   });
 });
@@ -191,8 +191,8 @@ describe('[parse] type guard', () => {
         text,
         null,
         { extended: false, unminify: false, decompress: false },
-        typeGuard
-      )
+        typeGuard,
+      ),
     ).not.toThrow();
   });
 
@@ -203,8 +203,8 @@ describe('[parse] type guard', () => {
         text,
         null,
         { extended: false, unminify: false, decompress: false },
-        typeGuard
-      )
+        typeGuard,
+      ),
     ).toThrow();
   });
 });

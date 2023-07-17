@@ -4,10 +4,10 @@
  */
 export function timer<T>(target: () => T): [T, number];
 export async function timer<T extends Promise<any>>(
-  target: () => T
+  target: () => T,
 ): Promise<[Awaited<T>, number]>;
 export function timer(
-  target: () => any
+  target: () => any,
 ): [any, number] | Promise<[any, number]> {
   const start = performance.now();
   const result = target();

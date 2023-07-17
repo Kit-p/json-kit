@@ -73,7 +73,7 @@ export function parse<T = any>(
   text: string,
   reviver?: ParseReviverFunction | ParseOptions | null,
   options?: ParseOptions,
-  typeGuard?: ParseTypeGuardFunction<T>
+  typeGuard?: ParseTypeGuardFunction<T>,
 ): T {
   let _reviver: ParseReviverFunction | undefined = undefined;
   if (typeof reviver === 'function') {
@@ -109,7 +109,7 @@ export function parse<T = any>(
   try {
     if (typeGuard?.(result) === false) {
       throw new Error(
-        'Please throw a custom error in the type guard function to track the problems'
+        'Please throw a custom error in the type guard function to track the problems',
       );
     }
   } catch (err: unknown) {
@@ -125,7 +125,7 @@ export function parse<T = any>(
 function unminifyKeys(
   obj: any,
   keyMap?: Record<string, string>,
-  level?: number
+  level?: number,
 ): any {
   let _level: number;
   if (level == null || level === 0) {
@@ -165,7 +165,7 @@ function unminifyKeys(
 export function decompressString(str: string): string {
   try {
     return new TextDecoder().decode(
-      Uint8Array.from(decompress(Base64.toUint8Array(str)))
+      Uint8Array.from(decompress(Base64.toUint8Array(str))),
     );
   } catch (err: unknown) {
     // str is not a base64 encoded string of a byte array

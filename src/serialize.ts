@@ -12,7 +12,7 @@ export function serialize(obj: any) {
       extended: { enable: false },
       decompress: { enable: false },
       unminify: { enable: false },
-    }
+    },
   );
 }
 
@@ -27,6 +27,6 @@ export function deserialize(obj: any) {
       extended: { enable: true, relaxed: true },
       decompress: { enable: false },
       unminify: { enable: false },
-    }
+    },
   );
 }
