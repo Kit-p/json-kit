@@ -2,7 +2,11 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "rules": {
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
