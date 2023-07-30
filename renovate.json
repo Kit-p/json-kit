@@ -3,7 +3,6 @@
   "extends": [
     "config:js-lib",
     ":semanticCommits",
-    ":semanticCommitTypeAll(chore)",
     ":semanticCommitScope(deps)",
     "npm:unpublishSafe",
     ":assignAndReview(Kit-p)",

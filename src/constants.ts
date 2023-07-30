@@ -1,3 +1,11 @@
+/**
+ * Array of identifiers that can be used as the initial part of a constructed identifier.
+ *
+ * @privateRemarks
+ * This is not intended to be used publicly.
+ *
+ * @internal
+ */
 export const MINIFY_STARTING_CANDIDATES = [
   'a',
   'b',
@@ -27,6 +35,14 @@ export const MINIFY_STARTING_CANDIDATES = [
   'z',
 ] as const;
 
+/**
+ * Array of identifiers that can be used as the remaining part of a constructed identifier.
+ *
+ * @privateRemarks
+ * This is not intended to be used publicly.
+ *
+ * @internal
+ */
 export const MINIFY_REMAINING_CANDIDATES = [
   '0',
   '1',

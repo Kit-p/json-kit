@@ -7,7 +7,7 @@ describe('[serialize] serialize', () => {
   };
 
   it('serialize should transform JavaScript object into Extended JSON object', () => {
-    const serializedObj = JsonKit.serialize(obj);
+    const serializedObj = JsonKit.serialize<{ date: unknown }>(obj);
     expect(serializedObj.date).toHaveProperty('$date');
   });
 });
@@ -18,7 +18,7 @@ describe('[serialize] deserialize', () => {
   };
 
   it('deserialize should transform Extended JSON object into JavaScript object', () => {
-    const deserializedObj = JsonKit.deserialize(obj);
+    const deserializedObj = JsonKit.deserialize<{ date: unknown }>(obj);
     expect(deserializedObj.date).toBeInstanceOf(Date);
   });
 });

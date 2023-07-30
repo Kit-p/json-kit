@@ -1,6 +1,18 @@
 <h1 align="center">json-kit</h1>
 
 <div align="center">
+  <a href="https://www.npmjs.com/package/@kit-p/json-kit">
+    <img
+      src="https://img.shields.io/npm/v/%40kit-p/json-kit"
+      alt="npm: @kit-p/json-kit"
+    />
+  </a>
+  <a>
+    <img
+      src="https://img.shields.io/github/languages/top/Kit-p/json-kit"
+      alt="languages: github.com/Kit-p/json-kit"
+    />
+  </a>
   <a href="https://github.com/semantic-release/semantic-release">
     <img
       src="https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release"
@@ -21,7 +33,7 @@
 
 ## Project State
 
-> This project is in **early development** phase. The APIs are subject to change. Please do **NOT** use in production environments.
+> This project is in **maintenance** state. The APIs are stable.
 
 ## Installation
 
@@ -73,10 +85,10 @@ import { JsonKit } from "@kit-p/json-kit";
   </script>
   ```
 
+## Usage
+
+See [the documentation site](https://kit-p.github.io/json-kit/modules.html) or [the repository Wiki page](https://github.com/Kit-p/json-kit/wiki/Exports) or `docs/modules.md`.
+
 ## License
 
-MIT
-
-```
-
-```
+[MIT](https://github.com/Kit-p/json-kit/blob/main/LICENSE)

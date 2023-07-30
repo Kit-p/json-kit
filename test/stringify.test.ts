@@ -30,11 +30,11 @@ describe('[stringify] basic', () => {
     expect(JsonKit.stringify(obj)).toEqual(JSON.stringify(obj));
 
     expect(JsonKit.stringify(obj, replacerArr, ' ')).toEqual(
-      JSON.stringify(obj, replacerArr, ' ')
+      JSON.stringify(obj, replacerArr, ' '),
     );
 
     expect(JsonKit.stringify(obj, replacerFunc, ' ')).toEqual(
-      JSON.stringify(obj, replacerFunc, ' ')
+      JSON.stringify(obj, replacerFunc, ' '),
     );
   });
 
@@ -43,19 +43,19 @@ describe('[stringify] basic', () => {
     const replacerFunc: StringifyReplacerFunction = () => 'test';
 
     expect(
-      JsonKit.stringify(obj, { extended: { enable: true, relaxed: false } })
+      JsonKit.stringify(obj, { extended: { enable: true, relaxed: false } }),
     ).toEqual(EJSON.stringify(obj, { relaxed: false }));
 
     expect(
-      JsonKit.stringify(obj, { extended: { enable: true, relaxed: true } })
+      JsonKit.stringify(obj, { extended: { enable: true, relaxed: true } }),
     ).toEqual(EJSON.stringify(obj, { relaxed: true }));
 
     expect(JsonKit.stringify(obj, replacerArr, 4, { extended: true })).toEqual(
-      EJSON.stringify(obj, replacerArr, 4)
+      EJSON.stringify(obj, replacerArr, 4),
     );
 
     expect(JsonKit.stringify(obj, replacerFunc, 4, { extended: true })).toEqual(
-      EJSON.stringify(obj, replacerFunc, 4)
+      EJSON.stringify(obj, replacerFunc, 4),
     );
   });
 
@@ -174,10 +174,10 @@ describe('[stringify] minify', () => {
         obj,
         ['very-long-name', 'very-long-name-2', 'normal'],
         0,
-        { minify: { enable: true, keyMap: undefined } }
-      )
+        { minify: { enable: true, keyMap: undefined } },
+      ),
     ).toEqual(
-      '{"_jkv":{"normal":"string","a0":{"a0":"very-long-name","a1":2}},"_jkm":{"a0":"very-long-name","a1":"very-long-name-2"}}'
+      '{"_jkv":{"normal":"string","a0":{"a0":"very-long-name","a1":2}},"_jkm":{"a0":"very-long-name","a1":"very-long-name-2"}}',
     );
   });
 
@@ -197,10 +197,10 @@ describe('[stringify] minify', () => {
             enable: true,
             keyMap: { 'very-long-name': 'vln', 'very-long-name-2': 'vln2' },
           },
-        }
-      )
+        },
+      ),
     ).toEqual(
-      '{"_jkv":{"number":1,"boolean":true,"null":null,"undefined":"undefined","date":"2022-12-01T13:44:15.177Z","arr":[{"vln":{"vln":"very-long-name"}},{"testKeys":{"1":"a","2":"b","3":"c","4":"d","5":"e","6":"f","7":"g","8":"h","9":"i","10":"j","11":"k","12":"l","13":"m","14":"n","15":"o","16":"p","17":"q","18":"r","19":"s","20":"t","21":"u","22":"v","23":"w","24":"x","25":"y","26":"z","a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9,"j":10,"k":11,"l":12,"m":13,"n":14,"o":15,"p":16,"q":17,"r":18,"s":19,"t":20,"u":21,"v":22,"w":23,"x":24,"y":25,"z":26},"vln2":true}],"normal":"string","vln":{"vln":"very-long-name","vln2":2}},"_jkm":{"vln":"very-long-name","vln2":"very-long-name-2"}}'
+      '{"_jkv":{"number":1,"boolean":true,"null":null,"undefined":"undefined","date":"2022-12-01T13:44:15.177Z","arr":[{"vln":{"vln":"very-long-name"}},{"testKeys":{"1":"a","2":"b","3":"c","4":"d","5":"e","6":"f","7":"g","8":"h","9":"i","10":"j","11":"k","12":"l","13":"m","14":"n","15":"o","16":"p","17":"q","18":"r","19":"s","20":"t","21":"u","22":"v","23":"w","24":"x","25":"y","26":"z","a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9,"j":10,"k":11,"l":12,"m":13,"n":14,"o":15,"p":16,"q":17,"r":18,"s":19,"t":20,"u":21,"v":22,"w":23,"x":24,"y":25,"z":26},"vln2":true}],"normal":"string","vln":{"vln":"very-long-name","vln2":2}},"_jkm":{"vln":"very-long-name","vln2":"very-long-name-2"}}',
     );
   });
 });
@@ -226,11 +226,11 @@ describe('[stringify] compress', () => {
     const replacer: StringifyReplacerFunction = () => 'test';
 
     expect(JsonKit.stringify(obj, { compress: true })).toEqual(
-      JsonKit.compressString(JSON.stringify(obj))
+      JsonKit.compressString(JSON.stringify(obj)),
     );
 
     expect(JsonKit.stringify(obj, replacer, ' ', { compress: true })).toEqual(
-      JsonKit.compressString(JSON.stringify(obj, replacer, ' '))
+      JsonKit.compressString(JSON.stringify(obj, replacer, ' ')),
     );
   });
 
@@ -241,18 +241,18 @@ describe('[stringify] compress', () => {
       JsonKit.stringify(obj, {
         extended: { enable: true, relaxed: false },
         compress: { enable: true },
-      })
+      }),
     ).toEqual(JsonKit.compressString(EJSON.stringify(obj, { relaxed: false })));
 
     expect(
       JsonKit.stringify(obj, {
         extended: { enable: true, relaxed: true },
         compress: { enable: true },
-      })
+      }),
     ).toEqual(JsonKit.compressString(EJSON.stringify(obj, { relaxed: true })));
 
     expect(
-      JsonKit.stringify(obj, replacer, 4, { extended: true, compress: true })
+      JsonKit.stringify(obj, replacer, 4, { extended: true, compress: true }),
     ).toEqual(JsonKit.compressString(EJSON.stringify(obj, replacer, 4)));
   });
 });

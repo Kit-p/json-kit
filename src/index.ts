@@ -1,9 +1,12 @@
-import * as Parse from './parse.js';
-import * as Serialize from './serialize.js';
-import * as Stringify from './stringify.js';
+/**
+ * A library to work with JSON and EJSON (Extended JSON).
+ *
+ * @packageDocumentation
+ */
 
-export const JsonKit = {
-  ...Parse,
-  ...Serialize,
-  ...Stringify,
-} as const;
+/**
+ * Object containing all the methods and types for this library.
+ *
+ * @public
+ */
+export * as JsonKit from './external.js';
