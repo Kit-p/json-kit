@@ -1,3 +1,22 @@
+## [2.0.0](https://github.com/Kit-p/json-kit/compare/v1.1.1...v2.0.0) (2023-07-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **signature:** CHANGES
+
+### Features
+
+* **serialize:** add generic type and typeGuard parameter to serialize and deserialize ([6542bf6](https://github.com/Kit-p/json-kit/commit/6542bf6afee31b8066cc8ff66320a7986e2e482d))
+* **serialize:** serialize and deserialize ([#42](https://github.com/Kit-p/json-kit/issues/42)) ([0c008fe](https://github.com/Kit-p/json-kit/commit/0c008fefcea5fb49b93c2e1aae45fab2e674abd7))
+* **signature:** provide overloads for stringify and parse ([95ef4b8](https://github.com/Kit-p/json-kit/commit/95ef4b86b74195c5651784e54d471dfe12ce7a93))
+
+
+### Bug Fixes
+
+* **serialize:** add missing return type ([04577d3](https://github.com/Kit-p/json-kit/commit/04577d35dcbe2a68b22b4c86897bd8e14d3e7525))
+* **types:** use namespace export for better consumption ([759eaa7](https://github.com/Kit-p/json-kit/commit/759eaa7024a0d4d91f7d4682f78626a7878d92e9))
+
 ## [1.1.1](https://github.com/Kit-p/json-kit/compare/v1.1.0...v1.1.1) (2023-03-25)
 
 ### Bug Fixes
