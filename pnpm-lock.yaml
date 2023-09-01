@@ -110,14 +110,14 @@ devDependencies:
     specifier: 2.6.0
     version: 2.6.0
   typedoc:
-    specifier: 0.24.8
-    version: 0.24.8(typescript@5.1.6)
+    specifier: 0.25.0
+    version: 0.25.0(typescript@5.1.6)
   typedoc-github-wiki-theme:
     specifier: 1.1.0
-    version: 1.1.0(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.8)
+    version: 1.1.0(typedoc-plugin-markdown@3.15.3)(typedoc@0.25.0)
   typedoc-plugin-markdown:
     specifier: 3.15.3
-    version: 3.15.3(typedoc@0.24.8)
+    version: 3.15.3(typedoc@0.25.0)
   typescript:
     specifier: 5.1.6
     version: 5.1.6
@@ -9367,31 +9367,31 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typedoc-github-wiki-theme@1.1.0(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.8):
+  /typedoc-github-wiki-theme@1.1.0(typedoc-plugin-markdown@3.15.3)(typedoc@0.25.0):
     resolution: {integrity: sha512-VyFmz8ZV2j/qEsCjD5EtR6FgZsCoy64Zr6SS9kCTcq7zx69Cx4UJBx8Ga/naxqs08TDggE6myIfODY6awwAGcA==}
     peerDependencies:
       typedoc: '>=0.24.0'
       typedoc-plugin-markdown: '>=3.15.0'
     dependencies:
-      typedoc: 0.24.8(typescript@5.1.6)
-      typedoc-plugin-markdown: 3.15.3(typedoc@0.24.8)
+      typedoc: 0.25.0(typescript@5.1.6)
+      typedoc-plugin-markdown: 3.15.3(typedoc@0.25.0)
     dev: true
 
-  /typedoc-plugin-markdown@3.15.3(typedoc@0.24.8):
+  /typedoc-plugin-markdown@3.15.3(typedoc@0.25.0):
     resolution: {integrity: sha512-idntFYu3vfaY3eaD+w9DeRd0PmNGqGuNLKihPU9poxFGnATJYGn9dPtEhn2QrTdishFMg7jPXAhos+2T6YCWRQ==}
     peerDependencies:
       typedoc: '>=0.24.0'
     dependencies:
       handlebars: 4.7.7
-      typedoc: 0.24.8(typescript@5.1.6)
+      typedoc: 0.25.0(typescript@5.1.6)
     dev: true
 
-  /typedoc@0.24.8(typescript@5.1.6):
-    resolution: {integrity: sha512-ahJ6Cpcvxwaxfu4KtjA8qZNqS43wYt6JL27wYiIgl1vd38WW/KWX11YuAeZhuz9v+ttrutSsgK+XO1CjL1kA3w==}
-    engines: {node: '>= 14.14'}
+  /typedoc@0.25.0(typescript@5.1.6):
+    resolution: {integrity: sha512-FvCYWhO1n5jACE0C32qg6b3dSfQ8f2VzExnnRboowHtqUD6ARzM2r8YJeZFYXhcm2hI4C2oCRDgNPk/yaQUN9g==}
+    engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x
     dependencies:
       lunr: 2.3.9
       marked: 4.3.0
