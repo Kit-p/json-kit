@@ -62,8 +62,8 @@ devDependencies:
     specifier: 29.5.5
     version: 29.5.5
   '@types/lodash.clonedeep':
-    specifier: 4.5.7
-    version: 4.5.7
+    specifier: 4.5.9
+    version: 4.5.9
   '@types/node':
     specifier: 20.7.1
     version: 20.7.1
@@ -3558,8 +3558,8 @@ packages:
       '@types/node': 20.7.1
     dev: true
 
-  /@types/lodash.clonedeep@4.5.7:
-    resolution: {integrity: sha512-ccNqkPptFIXrpVqUECi60/DFxjNKsfoQxSQsgcBJCX/fuX1wgyQieojkcWH/KpE3xzLoWN/2k+ZeGqIN3paSvw==}
+  /@types/lodash.clonedeep@4.5.9:
+    resolution: {integrity: sha512-19429mWC+FyaAhOLzsS8kZUsI+/GmBAQ0HFiCPsKGU+7pBXOQWhyrY6xNNDwUSX8SMZMJvuFVMF9O5dQOlQK9Q==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
