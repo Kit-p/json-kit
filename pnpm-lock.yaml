@@ -110,14 +110,14 @@ devDependencies:
     specifier: 2.6.3
     version: 2.6.3
   typedoc:
-    specifier: 0.26.5
-    version: 0.26.5(typescript@5.2.2)
+    specifier: 0.26.6
+    version: 0.26.6(typescript@5.2.2)
   typedoc-github-wiki-theme:
     specifier: 1.1.0
-    version: 1.1.0(typedoc-plugin-markdown@3.16.0)(typedoc@0.26.5)
+    version: 1.1.0(typedoc-plugin-markdown@3.16.0)(typedoc@0.26.6)
   typedoc-plugin-markdown:
     specifier: 3.16.0
-    version: 3.16.0(typedoc@0.26.5)
+    version: 3.16.0(typedoc@0.26.6)
   typescript:
     specifier: 5.2.2
     version: 5.2.2
@@ -10932,27 +10932,27 @@ packages:
       typed-array-byte-offset: 1.0.2
     dev: true
 
-  /typedoc-github-wiki-theme@1.1.0(typedoc-plugin-markdown@3.16.0)(typedoc@0.26.5):
+  /typedoc-github-wiki-theme@1.1.0(typedoc-plugin-markdown@3.16.0)(typedoc@0.26.6):
     resolution: {integrity: sha512-VyFmz8ZV2j/qEsCjD5EtR6FgZsCoy64Zr6SS9kCTcq7zx69Cx4UJBx8Ga/naxqs08TDggE6myIfODY6awwAGcA==}
     peerDependencies:
       typedoc: '>=0.24.0'
       typedoc-plugin-markdown: '>=3.15.0'
     dependencies:
-      typedoc: 0.26.5(typescript@5.2.2)
-      typedoc-plugin-markdown: 3.16.0(typedoc@0.26.5)
+      typedoc: 0.26.6(typescript@5.2.2)
+      typedoc-plugin-markdown: 3.16.0(typedoc@0.26.6)
     dev: true
 
-  /typedoc-plugin-markdown@3.16.0(typedoc@0.26.5):
+  /typedoc-plugin-markdown@3.16.0(typedoc@0.26.6):
     resolution: {integrity: sha512-eeiC78fDNGFwemPIHiwRC+mEC7W5jwt3fceUev2gJ2nFnXpVHo8eRrpC9BLWZDee6ehnz/sPmNjizbXwpfaTBw==}
     peerDependencies:
       typedoc: '>=0.24.0'
     dependencies:
       handlebars: 4.7.8
-      typedoc: 0.26.5(typescript@5.2.2)
+      typedoc: 0.26.6(typescript@5.2.2)
     dev: true
 
-  /typedoc@0.26.5(typescript@5.2.2):
-    resolution: {integrity: sha512-Vn9YKdjKtDZqSk+by7beZ+xzkkr8T8CYoiasqyt4TTRFy5+UHzL/mF/o4wGBjRF+rlWQHDb0t6xCpA3JNL5phg==}
+  /typedoc@0.26.6(typescript@5.2.2):
+    resolution: {integrity: sha512-SfEU3SH3wHNaxhFPjaZE2kNl/NFtLNW5c1oHsg7mti7GjmUj1Roq6osBQeMd+F4kL0BoRBBr8gQAuqBlfFu8LA==}
     engines: {node: '>= 18'}
     hasBin: true
     peerDependencies:
