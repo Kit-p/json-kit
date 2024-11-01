@@ -104,7 +104,7 @@
     "tslib": "2.6.3",
     "typedoc": "0.26.8",
     "typedoc-github-wiki-theme": "1.1.0",
-    "typedoc-plugin-markdown": "3.16.0",
+    "typedoc-plugin-markdown": "3.17.1",
     "typescript": "5.2.2"
   },
   "pnpm": {
