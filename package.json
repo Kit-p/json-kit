@@ -102,7 +102,7 @@
     "terser": "5.31.6",
     "ts-jest": "29.2.5",
     "tslib": "2.6.3",
-    "typedoc": "0.26.10",
+    "typedoc": "0.27.2",
     "typedoc-github-wiki-theme": "1.1.0",
     "typedoc-plugin-markdown": "3.16.0",
     "typescript": "5.2.2"
