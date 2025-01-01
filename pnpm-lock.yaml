@@ -32,8 +32,8 @@ devDependencies:
     specifier: 25.0.8
     version: 25.0.8(rollup@3.29.5)
   '@rollup/plugin-node-resolve':
-    specifier: 15.3.0
-    version: 15.3.0(rollup@3.29.5)
+    specifier: 15.3.1
+    version: 15.3.1(rollup@3.29.5)
   '@rollup/plugin-typescript':
     specifier: 11.1.6
     version: 11.1.6(rollup@3.29.5)(tslib@2.6.3)(typescript@5.2.2)
@@ -3162,8 +3162,8 @@ packages:
       rollup: 3.29.5
     dev: true
 
-  /@rollup/plugin-node-resolve@15.3.0(rollup@3.29.5):
-    resolution: {integrity: sha512-9eO5McEICxMzJpDW9OnMYSv4Sta3hmt7VtBFz5zR9273suNOydOyq/FrGeGy+KsTRFm8w0SLVhzig2ILFT63Ag==}
+  /@rollup/plugin-node-resolve@15.3.1(rollup@3.29.5):
+    resolution: {integrity: sha512-tgg6b91pAybXHJQMAAwW9VuWBO6Thi+q7BCNARLwSqlmsHz0XYURtGvh/AuwSADXSI4h/2uHbs7s4FzlZDGSGA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
