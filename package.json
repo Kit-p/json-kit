@@ -99,7 +99,7 @@
     "renovate": "37.440.7",
     "rollup": "3.29.5",
     "semantic-release": "22.0.12",
-    "terser": "5.36.0",
+    "terser": "5.39.0",
     "ts-jest": "29.2.5",
     "tslib": "2.6.3",
     "typedoc": "0.27.2",
