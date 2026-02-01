@@ -104,8 +104,8 @@ devDependencies:
     specifier: 5.44.1
     version: 5.44.1
   ts-jest:
-    specifier: 29.4.5
-    version: 29.4.5(@babel/core@7.21.3)(jest@29.7.0)(typescript@5.2.2)
+    specifier: 29.4.6
+    version: 29.4.6(@babel/core@7.21.3)(jest@29.7.0)(typescript@5.2.2)
   tslib:
     specifier: 2.6.3
     version: 2.6.3
@@ -10517,6 +10517,7 @@ packages:
   /tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
     requiresBuild: true
     dependencies:
       chownr: 2.0.0
@@ -10530,6 +10531,7 @@ packages:
   /tar@7.5.2:
     resolution: {integrity: sha512-7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
     requiresBuild: true
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
@@ -10696,8 +10698,8 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /ts-jest@29.4.5(@babel/core@7.21.3)(jest@29.7.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-HO3GyiWn2qvTQA4kTgjDcXiMwYQt68a1Y8+JuLRVpdIzm+UOLSHgl/XqR4c6nzJkq5rOkjc02O2I7P7l/Yof0Q==}
+  /ts-jest@29.4.6(@babel/core@7.21.3)(jest@29.7.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-fSpWtOO/1AjSNQguk43hb/JCo16oJDnMJf3CdEGNkqsEX3t0KX96xvyX1D7PfLCpVoKu4MfVrqUkFyblYoY4lA==}
     engines: {node: ^14.15.0 || ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
