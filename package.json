@@ -96,7 +96,7 @@
     "husky": "8.0.3",
     "jest": "29.7.0",
     "prettier": "3.8.1",
-    "renovate": "42.96.3",
+    "renovate": "42.99.0",
     "rollup": "3.30.0",
     "semantic-release": "22.0.12",
     "terser": "5.44.1",
