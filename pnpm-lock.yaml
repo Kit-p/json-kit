@@ -89,8 +89,8 @@ devDependencies:
     specifier: 29.7.0
     version: 29.7.0(@types/node@20.19.43)(ts-node@10.9.1)
   prettier:
-    specifier: 3.8.1
-    version: 3.8.1
+    specifier: 3.9.6
+    version: 3.9.6
   renovate:
     specifier: 42.99.0
     version: 42.99.0(typanion@3.13.0)
@@ -9319,8 +9319,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.8.1:
-    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+  /prettier@3.9.6:
+    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
